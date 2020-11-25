@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/', function () {
+    return view('welcome');
 });
+//------------------------------------------
+// Room Routes
+//------------------------------------------
+Route::post('/room', 'App\Http\Controllers\RoomController@store');
+Route::get('/room{room}', 'App\Http\Controllers\RoomController@show');
+Route::get('/online/{room}', 'App\Http\Controllers\RoomController@online');
+
+//------------------------------------------
+Route::post('/sdp/{room}', 'App\Http\Controllers\SdpController@store');
